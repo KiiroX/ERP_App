@@ -10,7 +10,10 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idUser;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     public long getIdUser() {

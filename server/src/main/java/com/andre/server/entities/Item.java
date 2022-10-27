@@ -10,21 +10,28 @@ public class Item {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idItem;
 
+    @Column(nullable = false, unique = true)
     private long itemCode;
+
+    @Column(nullable = false)
     private String description;
+
+    @Column(nullable = false)
     private double price;
 
-    @OneToMany(targetEntity = ReducedPrice.class)
-    private Set<ReducedPrice> reducedPrice;
-
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private StateEnum state;
 
-    @OneToOne
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
     private Supplier supplier;
 
+    @Column(nullable = false)
     private LocalDate creationDate;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
     private User creator;
 
     public long getIdItem() {

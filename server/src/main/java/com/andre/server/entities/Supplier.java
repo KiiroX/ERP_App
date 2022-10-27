@@ -1,9 +1,6 @@
 package com.andre.server.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Supplier {
@@ -11,7 +8,10 @@ public class Supplier {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idSupplier;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String country;
 
     public long getIdSupplier() {

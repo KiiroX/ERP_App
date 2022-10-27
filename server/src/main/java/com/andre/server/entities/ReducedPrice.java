@@ -9,9 +9,18 @@ public class ReducedPrice {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idReducedPrice;
 
+    @Column(nullable = false)
     private double reducedPrice;
+
+    @Column(nullable = false)
     private LocalDate startDate;
+
+    @Column(nullable = false)
     private LocalDate endDate;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    private Item item;
 
     public long getIdReducedPrice() {
         return idReducedPrice;
