@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.andre</groupId>
-	<artifactId>servidorErp</artifactId>
+	<artifactId>server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>servidorErp</name>
+	<name>server</name>
 	<description>Server with Spring and H2</description>
 	<properties>
 		<java.version>1.8</java.version>
