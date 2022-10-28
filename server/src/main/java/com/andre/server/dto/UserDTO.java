@@ -1,19 +1,9 @@
-package com.andre.server.entities;
+package com.andre.server.dto;
 
+public class UserDTO {
 
-import javax.persistence.*;
-
-@Entity
-@Table(name="users")
-public class User {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idUser;
-
-    @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false, unique = true)
     private String email;
 
     public long getIdUser() {
@@ -39,4 +29,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "idUser=" + idUser +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
 }

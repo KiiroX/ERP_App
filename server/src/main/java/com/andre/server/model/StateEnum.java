@@ -1,4 +1,4 @@
-package com.andre.server.entities;
+package com.andre.server.model;
 
 public enum StateEnum {
 
