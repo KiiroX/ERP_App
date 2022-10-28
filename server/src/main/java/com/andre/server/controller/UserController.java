@@ -1,6 +1,6 @@
 package com.andre.server.controller;
 
-import com.andre.server.model.User;
+import com.andre.server.dto.UserDTO;
 import com.andre.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("hello")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping("user")
-    public List<User> getAllUser() {
+    public List<UserDTO> getAllUser() {
         return userService.getAllUser();
     }
 
