@@ -1,37 +1,19 @@
-package com.andre.server.model;
+package com.andre.server.dto;
 
-import javax.persistence.*;
+import com.andre.server.model.StateEnum;
+
 import java.time.LocalDate;
 
-@Entity
-public class Item {
+public class ItemDTO {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idItem;
-
-    @Column(nullable = false, unique = true)
     private long itemCode;
-
-    @Column(nullable = false)
     private String description;
-
-    @Column(nullable = false)
     private double price;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
     private StateEnum state;
-
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
-    private Supplier supplier;
-
-    @Column(nullable = false)
+    private SupplierDTO supplier;
     private LocalDate creationDate;
-
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
-    private User creator;
+    private UserDTO creator;
 
     public long getIdItem() {
         return idItem;
@@ -73,11 +55,11 @@ public class Item {
         this.state = state;
     }
 
-    public Supplier getSupplier() {
+    public SupplierDTO getSupplier() {
         return supplier;
     }
 
-    public void setSupplier(Supplier supplier) {
+    public void setSupplier(SupplierDTO supplier) {
         this.supplier = supplier;
     }
 
@@ -89,11 +71,26 @@ public class Item {
         this.creationDate = creationDate;
     }
 
-    public User getCreator() {
+    public UserDTO getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(UserDTO creator) {
         this.creator = creator;
     }
+
+    @Override
+    public String toString() {
+        return "ItemDTO{" +
+                "idItem=" + idItem +
+                ", itemCode=" + itemCode +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", state=" + state +
+                ", supplier=" + supplier.getName() +
+                ", creationDate=" + creationDate +
+                ", creator=" + creator.getName() +
+                '}';
+    }
+
 }

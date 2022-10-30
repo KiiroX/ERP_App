@@ -11,14 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-//This way the library can locate and match properties easier (Entities)
-//modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
-
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -52,6 +49,7 @@ public class UserServiceImpl implements UserService {
         }
 
         return null;
+
     }
 
 }

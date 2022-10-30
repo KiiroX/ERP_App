@@ -1,26 +1,14 @@
-package com.andre.server.model;
+package com.andre.server.dto;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-public class ReducedPrice {
+public class ReducedPriceDTO {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idReducedPrice;
-
-    @Column(nullable = false)
     private double reducedPrice;
-
-    @Column(nullable = false)
     private LocalDate startDate;
-
-    @Column(nullable = false)
     private LocalDate endDate;
-
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
-    private Item item;
+    private ItemDTO item;
 
     public long getIdReducedPrice() {
         return idReducedPrice;
@@ -54,12 +42,23 @@ public class ReducedPrice {
         this.endDate = endDate;
     }
 
-    public Item getItem() {
+    public ItemDTO getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(ItemDTO item) {
         this.item = item;
+    }
+
+    @Override
+    public String toString() {
+        return "ReducedPriceDTO{" +
+                "idReducedPrice=" + idReducedPrice +
+                ", reducedPrice=" + reducedPrice +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", item=" + item.getDescription() +
+                '}';
     }
 
 }
