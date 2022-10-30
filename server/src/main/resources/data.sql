@@ -13,7 +13,7 @@ INSERT INTO item (item_code, description, price, state, creation_date, creator_i
 INSERT INTO item (item_code, description, price, state, creation_date, creator_id_user, supplier_id_supplier) VALUES(1237, 'Item 1237', 0.5, 'DISCONTINUED', '2022-10-28', 1, 2);
 INSERT INTO item (item_code, description, price, state, creation_date, creator_id_user, supplier_id_supplier) VALUES(1238, 'Item 1238', 13, 'ACTIVE', '2022-10-01', 2, 2);
 INSERT INTO item (item_code, description, price, state, creation_date, creator_id_user, supplier_id_supplier) VALUES(1239, 'Item 1239', 20, 'DISCONTINUED', '2022-10-27', 3, 2);
-INSERT INTO item (item_code, description, price, state, creation_date, creator_id_user, supplier_id_supplier) VALUES(1210, 'Item 1210', 10, 'ACTIVE', '2022-10-15', 3, 3);
+INSERT INTO item (item_code, description, price, state, creation_date, creator_id_user, supplier_id_supplier) VALUES(1210, 'Item 1210', 39.99, 'ACTIVE', '2022-10-15', 3, 3);
 INSERT INTO item (item_code, description, price, state, creation_date, creator_id_user, supplier_id_supplier) VALUES(1211, 'Item 1211', 10, 'DISCONTINUED', '2022-10-10', 2, 3);
 INSERT INTO item (item_code, description, price, state, creation_date, creator_id_user, supplier_id_supplier) VALUES(1212, 'Item 1212', 100, 'ACTIVE', '2022-10-28', 1, 3);
 INSERT INTO item (item_code, description, price, state, creation_date, creator_id_user, supplier_id_supplier) VALUES(1213, 'Item 1213', 7, 'ACTIVE', '2022-10-01', 3, 4);
