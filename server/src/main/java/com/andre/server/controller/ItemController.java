@@ -3,15 +3,13 @@ package com.andre.server.controller;
 import com.andre.server.dto.ItemDTO;
 import com.andre.server.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("item")
+@CrossOrigin("http://localhost:3000")
 public class ItemController {
 
     @Autowired
