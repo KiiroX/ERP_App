@@ -1,12 +1,11 @@
 package com.andre.server.controller;
 
 import com.andre.server.dto.SupplierDTO;
+import com.andre.server.model.Supplier;
 import com.andre.server.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +24,11 @@ public class SupplierController {
     @GetMapping("supplier/{name}")
     public SupplierDTO getSupplierByName(@PathVariable("name") String name) {
         return supplierService.getSupplierByName(name);
+    }
+
+    @PostMapping("addSupplier")
+    public ResponseEntity<Supplier> saveSupplier(@RequestBody Supplier supplier) {
+        return supplierService.saveSupplier(supplier);
     }
 
 }

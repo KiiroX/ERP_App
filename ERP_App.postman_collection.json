@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "d55b7175-c605-4982-8766-89e23bf73bca",
+		"name": "ERP_App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "getAllItem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/item/item",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"item",
+								"item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getItemByCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/item/item/1212",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"item",
+								"item",
+								"1212"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveitem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itemCode\": 1212,\r\n    \"description\": \"Item 1212\",\r\n    \"price\": 1200,\r\n    \"state\": \"ACTIVE\",\r\n    \"supplier\": {\r\n        \"idSupplier\": 4\r\n    },\r\n    \"creationDate\": \"2022-11-02\",\r\n    \"creator\": {\r\n        \"idUser\": 1,\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/item/addItem",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"item",
+								"addItem"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ReducedPrice",
+			"item": [
+				{
+					"name": "getAllReducedPrice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/price/price",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"price",
+								"price"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getReducedPriceByItem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/price/price/1212",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"price",
+								"price",
+								"1212"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supplier",
+			"item": [
+				{
+					"name": "getAllSupplier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/supplier/supplier",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supplier",
+								"supplier"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSupplierByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/supplier/supplier/buddy",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supplier",
+								"supplier",
+								"buddy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveSupplier",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kevin\",\r\n    \"country\": \"Spain\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/supplier/addSupplier",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supplier",
+								"addSupplier"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getAllUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserByEmail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/user/andre@gmail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"user",
+								"andre@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Alan\",\r\n    \"email\": \"alan@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/addUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"addUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -22,14 +22,14 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private StateEnum state;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Supplier supplier;
 
     @Column(nullable = false)
     private LocalDate creationDate;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private User creator;
 

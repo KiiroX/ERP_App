@@ -64,8 +64,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<addResources>true</addResources>
-<!--					<fork>false</fork>-->
+<!--					<addResources>true</addResources>-->
+					<fork>false</fork>
 				</configuration>
 			</plugin>
 		</plugins>

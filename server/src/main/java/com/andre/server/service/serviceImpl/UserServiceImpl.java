@@ -1,11 +1,14 @@
 package com.andre.server.service.serviceImpl;
 
 import com.andre.server.dto.UserDTO;
+import com.andre.server.model.Supplier;
 import com.andre.server.model.User;
 import com.andre.server.repository.UserRepository;
 import com.andre.server.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,6 +53,12 @@ public class UserServiceImpl implements UserService {
 
         return null;
 
+    }
+
+    @Override
+    public ResponseEntity<User> saveUser(User user) {
+        userRepository.save(user);
+        return new ResponseEntity<User>(user, null, HttpStatus.CREATED);
     }
 
 }

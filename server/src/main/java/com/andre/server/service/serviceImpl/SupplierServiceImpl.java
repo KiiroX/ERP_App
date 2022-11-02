@@ -6,6 +6,8 @@ import com.andre.server.repository.SupplierRepository;
 import com.andre.server.service.SupplierService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,5 +52,11 @@ public class SupplierServiceImpl implements SupplierService {
 
         return null;
 
+    }
+
+    @Override
+    public ResponseEntity<Supplier> saveSupplier(Supplier supplier) {
+        supplierRepository.save(supplier);
+        return new ResponseEntity<Supplier>(supplier, null, HttpStatus.CREATED);
     }
 }
