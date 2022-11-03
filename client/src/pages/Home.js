@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ItemModalUpdate from "../modals/ItemModalUpdate";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -39,7 +40,7 @@ export default function Home() {
                 <td>{item.creator.name}</td>
                 <td>
                   <button className="btn btn-primary max-2">View</button>
-                  <button className="btn btn-outline-primary max-2">Edit</button>
+                  <ItemModalUpdate />
                   <button className="btn btn-danger max-2">Delete</button>
                 </td>
               </tr>
