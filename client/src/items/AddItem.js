@@ -1,29 +1,77 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AddItem() {
   let navigate = useNavigate();
 
+  /*--- GET SUPPLIERS FROM SERVER AND SET THEM IN suppliers ---*/
+  const [suppliers, setSuppliers] = useState([]);
+
+  useEffect(() => {
+    loadSuppliers();
+  }, []);
+
+  const loadSuppliers = async () => {
+    const result = await axios.get("http://localhost:8080/supplier/supplier");
+    setSuppliers(result.data);
+  };
+  /*----------*/
+
+  /*--- DEFINE ITEM AND SAVE IT ---*/
   const [item, setItem] = useState({
     itemCode: "",
     description: "",
-    state: "ACTIVE",
     price: "",
-    supplier: ""
+    state: "ACTIVE",
+    supplier: "",
+    creationDate: getCurrentDate(),
+    creator: ""
   });
 
-  const { itemCode, description, state, price, supplier } = item;
+  const { itemCode, description, price, state, supplier, creationDate, creator } = item;
+  /*----------*/
 
+  //PREPARE JSON TO POST
+  var json = {
+    "itemCode": item.itemCode,
+    "description": item.description,
+    "price": item.price,
+    "state": item.state,
+    "supplier": {
+        "idSupplier": item.supplier
+    },
+    "creationDate": item.creationDate,
+    "creator": {
+        "idUser": 1 //TODO: get idUser from the login
+    }
+}
+
+function getCurrentDate() {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0');
+  var yyyy = today.getFullYear();
+
+  return today = yyyy + '-' + mm + '-' + dd;
+}
+
+
+  /*--- HANDLERS ---*/
   const handleChange = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("", item);
-    navigate("/");
+    if(item.itemCode != "" && item.description != "" && item.price != "" && item.supplier != "") {
+      await axios.post("http://localhost:8080/item/addItem", json);
+      navigate("/");
+    } else {
+      alert("All fields must be filled!");
+    }
   };
+  /*----------*/
 
   return (
     <div>
@@ -37,7 +85,7 @@ export default function AddItem() {
                   Item code:
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   name="itemCode"
                   value={itemCode}
@@ -72,20 +120,19 @@ export default function AddItem() {
                 <label htmlFor="supplier" className="form-label">
                   Supplier:
                 </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="supplier"
-                  value={supplier}
-                  onChange={(e) => handleChange(e)}
-                />
+                <select name="supplier" className="form-control" onChange={(e) => handleChange(e)}>
+                  <option></option>
+                  {suppliers.map((supplier, index) => (
+                    <option key={index} value={supplier.idSupplier}>{supplier.name}</option>
+                  ))}
+                </select>
               </div>
               <button type="submit" className="btn btn-outline-primary">
                 Submit
               </button>
-              <button type="submit" className="btn btn-outline-danger mx-2">
+              <Link type="submit" className="btn btn-outline-danger mx-2" to="/">
                 Cancel
-              </button>
+              </Link>
             </form>
           </div>
         </div>

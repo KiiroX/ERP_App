@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Button } from "bootstrap";
 
 export default function Home() {
   const [items, setItems] = useState([]);
