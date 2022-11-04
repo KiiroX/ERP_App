@@ -26,36 +26,43 @@ export default function AddItem() {
     state: "ACTIVE",
     supplier: "",
     creationDate: getCurrentDate(),
-    creator: ""
+    creator: "",
   });
 
-  const { itemCode, description, price, state, supplier, creationDate, creator } = item;
+  const {
+    itemCode,
+    description,
+    price,
+    state,
+    supplier,
+    creationDate,
+    creator,
+  } = item;
   /*----------*/
 
   //PREPARE JSON TO POST
   var json = {
-    "itemCode": item.itemCode,
-    "description": item.description,
-    "price": item.price,
-    "state": item.state,
-    "supplier": {
-        "idSupplier": item.supplier
+    itemCode: item.itemCode,
+    description: item.description,
+    price: item.price,
+    state: item.state,
+    supplier: {
+      idSupplier: item.supplier,
     },
-    "creationDate": item.creationDate,
-    "creator": {
-        "idUser": 1 //TODO: get idUser from the login
-    }
-}
+    creationDate: item.creationDate,
+    creator: {
+      idUser: 1, //TODO: get idUser from the login
+    },
+  };
 
-function getCurrentDate() {
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0');
-  var yyyy = today.getFullYear();
+  function getCurrentDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
+    var yyyy = today.getFullYear();
 
-  return today = yyyy + '-' + mm + '-' + dd;
-}
-
+    return (today = yyyy + "-" + mm + "-" + dd);
+  }
 
   /*--- HANDLERS ---*/
   const handleChange = (e) => {
@@ -64,7 +71,12 @@ function getCurrentDate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(item.itemCode != "" && item.description != "" && item.price != "" && item.supplier != "") {
+    if (
+      item.itemCode != "" &&
+      item.description != "" &&
+      item.price != "" &&
+      item.supplier != ""
+    ) {
       await axios.post("http://localhost:8080/item/addItem", json);
       navigate("/");
     } else {
@@ -120,17 +132,27 @@ function getCurrentDate() {
                 <label htmlFor="supplier" className="form-label">
                   Supplier:
                 </label>
-                <select name="supplier" className="form-control" onChange={(e) => handleChange(e)}>
+                <select
+                  name="supplier"
+                  className="form-control"
+                  onChange={(e) => handleChange(e)}
+                >
                   <option></option>
                   {suppliers.map((supplier, index) => (
-                    <option key={index} value={supplier.idSupplier}>{supplier.name}</option>
+                    <option key={index} value={supplier.idSupplier}>
+                      {supplier.name}
+                    </option>
                   ))}
                 </select>
               </div>
               <button type="submit" className="btn btn-outline-primary">
                 Submit
               </button>
-              <Link type="submit" className="btn btn-outline-danger mx-2" to="/">
+              <Link
+                type="submit"
+                className="btn btn-outline-danger mx-2"
+                to="/"
+              >
                 Cancel
               </Link>
             </form>

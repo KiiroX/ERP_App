@@ -14,6 +14,6 @@ public interface ItemService {
 
     public ResponseEntity<Item> saveItem(Item item);
 
-    public ResponseEntity<ItemDTO> updateItem(ItemDTO itemDTO);
+    public ResponseEntity<Item> updateItem(Item item);
 
 }

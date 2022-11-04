@@ -62,10 +62,18 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ResponseEntity<ItemDTO> updateItem(ItemDTO itemDTO) {
+    public ResponseEntity<Item> updateItem(Item item) {
         //data.findById
         //data.isPresent{save}
-        return null;
+        ItemDTO itemDTO = null;
+        itemDTO = getItemByCode(item.getItemCode());
+
+        if(itemDTO != null) {
+            itemRepository.save(item);
+        }
+
+        return new ResponseEntity<Item>(item, HttpStatus.CREATED);
+
     }
 
 }

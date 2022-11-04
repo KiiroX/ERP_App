@@ -27,12 +27,12 @@ public class ItemController {
     public ItemDTO getItemByCode(@PathVariable("itemCode") long itemCode) { return itemService.getItemByCode(itemCode); }
 
     @PostMapping("addItem")
-    public void saveItem(@RequestBody Item item) {
-        itemService.saveItem(item);
+    public ResponseEntity<Item> saveItem(@RequestBody Item item) {
+        return itemService.saveItem(item);
     }
 
-    @PutMapping("updateitem")
-    public ResponseEntity<ItemDTO> updateItem(@RequestBody ItemDTO itemDTO) {
-        return itemService.updateItem(itemDTO);
+    @PutMapping("updateItem")
+    public ResponseEntity<Item> updateItem(@RequestBody Item item) {
+        return itemService.updateItem(item);
     }
 }

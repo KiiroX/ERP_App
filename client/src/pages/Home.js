@@ -40,7 +40,7 @@ export default function Home() {
                 <td>{item.creator.name}</td>
                 <td>
                   <button className="btn btn-primary max-2">View</button>
-                  <ItemModalUpdate />
+                  <ItemModalUpdate item={item} />
                   <button className="btn btn-danger max-2">Delete</button>
                 </td>
               </tr>
