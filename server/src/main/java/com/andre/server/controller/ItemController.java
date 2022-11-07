@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("item")
-@CrossOrigin("http://localhost:3000")
 public class ItemController {
 
     @Autowired

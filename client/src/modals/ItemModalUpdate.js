@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function ItemModalUpdate({ item }) {
-  let navigate = useNavigate();
 
   const [show, setShow] = useState(false);
   const [isActive, setIsActive] = useState(
@@ -16,41 +15,35 @@ export default function ItemModalUpdate({ item }) {
     price: "",
   });
 
-  const { description, state, price } = updatedItem;
+  const { description, price } = updatedItem;
 
   var json = {
-    idItem: 9,
-    itemCode: 1212,
-    description: "Item 1212 Modificado",
-    price: 100.0,
-    state: "ACTIVE",
+    idItem: item.idItem,
+    itemCode: item.itemCode,
+    description: updatedItem.description,
+    price: updatedItem.price,
+    state: isActive ? "ACTIVE" : "DISCONTINUED",
     supplier: {
-      idSupplier: 3,
-      name: "Johana",
-      country: "Spain",
+      idSupplier: item.supplier.idSupplier,
+      name: item.supplier.name,
+      country: item.supplier.country,
     },
-    creationDate: "2022-10-28",
+    creationDate: item.creationDate,
     creator: {
-      idUser: 1,
-      name: "Andre",
-      email: "andre@gmail.com",
+      idUser: item.creator.idUser,
+      name: item.creator.name,
+      email: item.creator.email,
     },
   };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSave = (e) => {
-    e.preventDefault();
-    alert("Entered SAVE");
-    if (
-      item.itemCode != "" &&
-      item.description != "" &&
-      item.price != "" &&
-      item.supplier != ""
-    ) {
-      //await axios.post("http://localhost:8080/item/updateItem", json);
-      navigate("/");
+  const handleSave = async (e) => {
+    if (updatedItem.description != "" && updatedItem.price != "") {
+      console.log(json);
+      await axios.put("http://localhost:8080/item/updateItem", json);
+      window.location.reload();
     } else {
       alert("All fields must be filled!");
     }
@@ -61,8 +54,6 @@ export default function ItemModalUpdate({ item }) {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
     setUpdatedItem({ ...updatedItem, [e.target.name]: e.target.value });
   };
 
@@ -124,5 +115,3 @@ export default function ItemModalUpdate({ item }) {
     </>
   );
 }
-
-
