@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ItemModalUpdate from "../modals/ItemModalUpdate";
+import ItemModalView from "../modals/ItemModalView";
 
 export default function Home() {
+
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function Home() {
                 <td>{item.creationDate}</td>
                 <td>{item.creator.name}</td>
                 <td>
-                  <button className="btn btn-primary max-2">View</button>
+                  <ItemModalView item={item} />
                   <ItemModalUpdate item={item} />
                   <button className="btn btn-danger max-2">Delete</button>
                 </td>

@@ -8,6 +8,6 @@ public interface ReducedPriceService {
 
     public List<ReducedPriceDTO> getAllReducedPrice();
 
-    public ReducedPriceDTO getReducedPriceByItem(long itemCode);
+    public List<ReducedPriceDTO> getReducedPriceByItem(long itemCode);
 
 }

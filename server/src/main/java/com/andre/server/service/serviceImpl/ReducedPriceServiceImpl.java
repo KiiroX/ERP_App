@@ -37,18 +37,19 @@ public class ReducedPriceServiceImpl implements ReducedPriceService {
     }
 
     @Override
-    public ReducedPriceDTO getReducedPriceByItem(long itemCode) {
+    public List<ReducedPriceDTO> getReducedPriceByItem(long itemCode) {
 
+        List<ReducedPriceDTO> result = new ArrayList<>();
         List<ReducedPriceDTO> priceDTOList;
         priceDTOList = getAllReducedPrice();
 
         for(ReducedPriceDTO priceDTO : priceDTOList) {
             if(priceDTO.getItem().getItemCode() == itemCode) {
-                return priceDTO;
+                result.add(priceDTO);
             }
         }
 
-        return null;
+        return result;
 
     }
 

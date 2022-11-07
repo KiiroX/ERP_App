@@ -23,7 +23,7 @@ public class ReducedPriceController {
     }
 
     @GetMapping("price/{itemCode}")
-    public ReducedPriceDTO getReducedPriceByItem(@PathVariable("itemCode") long itemCode) {
+    public List<ReducedPriceDTO> getReducedPriceByItem(@PathVariable("itemCode") long itemCode) {
         return priceService.getReducedPriceByItem(itemCode);
     }
 
