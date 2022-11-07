@@ -1,7 +1,6 @@
 package com.andre.server.service.serviceImpl;
 
 import com.andre.server.dto.UserDTO;
-import com.andre.server.model.Supplier;
 import com.andre.server.model.User;
 import com.andre.server.repository.UserRepository;
 import com.andre.server.service.UserService;
@@ -29,7 +28,7 @@ public class UserServiceImpl implements UserService {
         List<User> userList = new ArrayList<>();
         List<UserDTO> userDTOList = new ArrayList<>();
 
-        userRepository.findAll().forEach(user -> userList.add(user)); //Remember to study this deeper (Lambda, Stream)
+        userRepository.findAll().forEach(user -> userList.add(user));
 
         for(User user : userList) {
             userDTOList.add(modelMapper.map(user, UserDTO.class));

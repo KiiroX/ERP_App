@@ -59,4 +59,5 @@ public class SupplierServiceImpl implements SupplierService {
         supplierRepository.save(supplier);
         return new ResponseEntity<Supplier>(supplier, null, HttpStatus.CREATED);
     }
+
 }

@@ -16,4 +16,6 @@ public interface ItemService {
 
     public ResponseEntity<Item> updateItem(Item item);
 
+    public void deleteItem(long itemCode);
+
 }

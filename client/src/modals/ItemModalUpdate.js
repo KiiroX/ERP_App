@@ -5,7 +5,6 @@ import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 
 export default function ItemModalUpdate({ item }) {
-
   const [show, setShow] = useState(false);
   const [isActive, setIsActive] = useState(
     item.state === "ACTIVE" ? true : false
@@ -84,7 +83,7 @@ export default function ItemModalUpdate({ item }) {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Group className="mb-3">
               <Form.Check
                 name="state"
                 type="checkbox"

@@ -18,7 +18,7 @@ public class ReducedPrice {
     @Column(nullable = false)
     private LocalDate endDate;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Item item;
 

@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 export default function AddItem() {
   let navigate = useNavigate();
 
-  /*--- GET SUPPLIERS FROM SERVER AND SET THEM IN suppliers ---*/
   const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
@@ -16,9 +15,7 @@ export default function AddItem() {
     const result = await axios.get("http://localhost:8080/supplier/supplier");
     setSuppliers(result.data);
   };
-  /*----------*/
 
-  /*--- DEFINE ITEM AND SAVE IT ---*/
   const [item, setItem] = useState({
     itemCode: "",
     description: "",
@@ -38,9 +35,7 @@ export default function AddItem() {
     creationDate,
     creator,
   } = item;
-  /*----------*/
 
-  //PREPARE JSON TO POST
   var json = {
     itemCode: item.itemCode,
     description: item.description,
@@ -64,7 +59,6 @@ export default function AddItem() {
     return (today = yyyy + "-" + mm + "-" + dd);
   }
 
-  /*--- HANDLERS ---*/
   const handleChange = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
@@ -83,7 +77,6 @@ export default function AddItem() {
       alert("All fields must be filled!");
     }
   };
-  /*----------*/
 
   return (
     <div>

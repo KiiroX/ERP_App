@@ -14,7 +14,7 @@ import java.util.List;
 public class SupplierController {
 
     @Autowired
-    SupplierService supplierService;
+    private SupplierService supplierService;
 
     @GetMapping("supplier")
     public List<SupplierDTO> getAllSupplier() {

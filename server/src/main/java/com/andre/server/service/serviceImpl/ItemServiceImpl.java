@@ -2,9 +2,9 @@ package com.andre.server.service.serviceImpl;
 
 import com.andre.server.dto.ItemDTO;
 import com.andre.server.model.Item;
-import com.andre.server.model.Supplier;
 import com.andre.server.repository.ItemRepository;
 import com.andre.server.service.ItemService;
+import com.andre.server.service.ReducedPriceService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +22,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private ReducedPriceService reducedPriceService;
 
     @Override
     public List<ItemDTO> getAllItem() {
@@ -63,8 +66,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseEntity<Item> updateItem(Item item) {
-        //data.findById
-        //data.isPresent{save}
+
         ItemDTO itemDTO = null;
         itemDTO = getItemByCode(item.getItemCode());
 
@@ -73,6 +75,16 @@ public class ItemServiceImpl implements ItemService {
         }
 
         return new ResponseEntity<Item>(item, HttpStatus.CREATED);
+
+    }
+
+    @Override
+    public void deleteItem(long itemCode) {
+
+        ItemDTO itemDTO = getItemByCode(itemCode);
+
+        reducedPriceService.deleteReducedPrice(itemCode);
+        itemRepository.deleteById(itemDTO.getIdItem());
 
     }
 

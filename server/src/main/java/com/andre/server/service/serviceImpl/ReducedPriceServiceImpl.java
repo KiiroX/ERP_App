@@ -6,6 +6,8 @@ import com.andre.server.repository.ReducedPriceRepository;
 import com.andre.server.service.ReducedPriceService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -40,8 +42,7 @@ public class ReducedPriceServiceImpl implements ReducedPriceService {
     public List<ReducedPriceDTO> getReducedPriceByItem(long itemCode) {
 
         List<ReducedPriceDTO> result = new ArrayList<>();
-        List<ReducedPriceDTO> priceDTOList;
-        priceDTOList = getAllReducedPrice();
+        List<ReducedPriceDTO> priceDTOList = getAllReducedPrice();
 
         for(ReducedPriceDTO priceDTO : priceDTOList) {
             if(priceDTO.getItem().getItemCode() == itemCode) {
@@ -50,6 +51,23 @@ public class ReducedPriceServiceImpl implements ReducedPriceService {
         }
 
         return result;
+
+    }
+
+    @Override
+    public ResponseEntity<ReducedPrice> saveReducedPrice(ReducedPrice price) {
+        priceRepository.save(price);
+        return new ResponseEntity<ReducedPrice>(price, null, HttpStatus.CREATED);
+    }
+
+    @Override
+    public void deleteReducedPrice(long itemCode) {
+
+        List<ReducedPriceDTO> priceDTOList = getReducedPriceByItem(itemCode);
+
+        for(ReducedPriceDTO priceDTO : priceDTOList) {
+            priceRepository.deleteById(priceDTO.getIdReducedPrice());
+        }
 
     }
 

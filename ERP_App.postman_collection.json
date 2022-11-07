@@ -102,6 +102,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "deleteItem",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/item/deleteItem/1210",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"item",
+								"deleteItem",
+								"1210"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -142,6 +162,54 @@
 								"price",
 								"price",
 								"1212"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveReducedPrice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"reducedPrice\": 27.0,\r\n        \"startDate\": \"2023-01-01\",\r\n        \"endDate\": \"2023-01-03\",\r\n        \"item\": {\r\n            \"idItem\": 6\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/price/addPrice",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"price",
+								"addPrice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteReducedPrice",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/price/deletePrice/1210",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"price",
+								"deletePrice",
+								"1210"
 							]
 						}
 					},

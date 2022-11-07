@@ -33,40 +33,44 @@ export default function ItemModalView({ item }) {
           <Modal.Title>Item {item.itemCode} </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Label htmlFor="reducedPrice">Price reductions:</Form.Label>
-          <Table>
-            <thead>
-              <tr>
-                <th>Reduced price</th>
-                <th>Start date</th>
-                <th>End date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reducedPrices.map((reducedPrice, index) => (
-                <tr key={index}>
-                  <td>{reducedPrice.reducedPrice}</td>
-                  <td>{reducedPrice.startDate}</td>
-                  <td>{reducedPrice.endDate}</td>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="reducedPrice">Price reductions:</Form.Label>
+            <Table>
+              <thead>
+                <tr>
+                  <th>Reduced price</th>
+                  <th>Start date</th>
+                  <th>End date</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-          <Form.Label htmlFor="supplier">Supplier:</Form.Label>
-          <Table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Country</th>
-              </tr>
-            </thead>
-            <tbody>
+              </thead>
+              <tbody>
+                {reducedPrices.map((reducedPrice, index) => (
+                  <tr key={index}>
+                    <td>{reducedPrice.reducedPrice}</td>
+                    <td>{reducedPrice.startDate}</td>
+                    <td>{reducedPrice.endDate}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="supplier">Supplier:</Form.Label>
+            <Table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Country</th>
+                </tr>
+              </thead>
+              <tbody>
                 <tr>
                   <td>{item.supplier.name}</td>
                   <td>{item.supplier.country}</td>
                 </tr>
-            </tbody>
-          </Table>
+              </tbody>
+            </Table>
+          </Form.Group>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

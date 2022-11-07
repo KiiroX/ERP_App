@@ -4,7 +4,6 @@ import com.andre.server.dto.ItemDTO;
 import com.andre.server.model.Item;
 import com.andre.server.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +14,7 @@ import java.util.List;
 public class ItemController {
 
     @Autowired
-    ItemService itemService;
+    private ItemService itemService;
 
     @GetMapping("item")
     public List<ItemDTO> getAllItem() {
@@ -34,4 +33,10 @@ public class ItemController {
     public ResponseEntity<Item> updateItem(@RequestBody Item item) {
         return itemService.updateItem(item);
     }
+
+    @DeleteMapping("deleteItem/{itemCode}")
+    public void deleteItem(@PathVariable("itemCode") long itemCode) {
+        itemService.deleteItem(itemCode);
+    }
+
 }
