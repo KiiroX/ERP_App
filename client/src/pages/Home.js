@@ -3,6 +3,7 @@ import axios from "axios";
 import ItemModalView from "../modals/ItemModalView";
 import ItemModalUpdate from "../modals/ItemModalUpdate";
 import ItemModalDelete from "../modals/ItemModalDelete";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -19,6 +20,9 @@ export default function Home() {
   return (
     <div className="container">
       <div className="py-4">
+        <Link id="addButton" className="btn btn-success" to="/additem">
+          Add
+        </Link>
         <table className="table shadow">
           <thead>
             <tr>

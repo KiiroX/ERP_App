@@ -5,3 +5,8 @@
 td button {
   margin-left: 10px;
 }
+
+#addButton {
+  float: right;
+  margin-bottom: 30px;
+}
