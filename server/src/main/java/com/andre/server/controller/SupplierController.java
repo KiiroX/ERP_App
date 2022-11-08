@@ -18,7 +18,14 @@ public class SupplierController {
 
     @GetMapping("supplier")
     public List<SupplierDTO> getAllSupplier() {
-        return supplierService.getAllSupplier();
+
+        List<SupplierDTO> supplierDTOList = null;
+        try {
+            supplierDTOList = supplierService.getAllSupplier();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return supplierDTOList;
     }
 
     @GetMapping("supplier/{name}")

@@ -1,6 +1,10 @@
 package com.andre.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Supplier {
@@ -13,6 +17,11 @@ public class Supplier {
 
     @Column(nullable = false)
     private String country;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "item_supplier", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "item_id"))
+    private List<Item> items;
 
     public long getIdSupplier() {
         return idSupplier;
@@ -36,6 +45,22 @@ public class Supplier {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void addItem(Item item) {
+        if(this.items == null) {
+            this.items = new ArrayList<>();
+        }
+
+        this.items.add(item);
     }
 
 }

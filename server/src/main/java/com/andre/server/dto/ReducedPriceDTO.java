@@ -50,15 +50,4 @@ public class ReducedPriceDTO {
         this.item = item;
     }
 
-    @Override
-    public String toString() {
-        return "ReducedPriceDTO{" +
-                "idReducedPrice=" + idReducedPrice +
-                ", reducedPrice=" + reducedPrice +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", item=" + item.getDescription() +
-                '}';
-    }
-
 }

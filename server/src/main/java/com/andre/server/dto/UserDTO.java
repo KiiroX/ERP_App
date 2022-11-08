@@ -30,13 +30,4 @@ public class UserDTO {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "idUser=" + idUser +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
-
 }

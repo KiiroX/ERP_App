@@ -1,7 +1,11 @@
 package com.andre.server.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -22,9 +26,9 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private StateEnum state;
 
-    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
-    private Supplier supplier;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "items")
+    private List<Supplier> suppliers;
 
     @Column(nullable = false)
     private LocalDate creationDate;
@@ -73,12 +77,12 @@ public class Item {
         this.state = state;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public List<Supplier> getSuppliers() {
+        return suppliers;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setSuppliers(List<Supplier> suppliers) {
+        this.suppliers = suppliers;
     }
 
     public LocalDate getCreationDate() {
@@ -95,6 +99,14 @@ public class Item {
 
     public void setCreator(User creator) {
         this.creator = creator;
+    }
+
+    public void addSupplier(Supplier supplier) {
+        if(this.suppliers == null) {
+            this.suppliers = new ArrayList<>();
+        }
+
+        this.suppliers.add(supplier);
     }
 
 }
