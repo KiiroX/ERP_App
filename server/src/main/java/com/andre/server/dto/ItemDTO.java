@@ -3,8 +3,6 @@ package com.andre.server.dto;
 import com.andre.server.model.StateEnum;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ItemDTO {
 
@@ -13,7 +11,6 @@ public class ItemDTO {
     private String description;
     private double price;
     private StateEnum state;
-    private List<SupplierDTO> suppliers;
     private LocalDate creationDate;
     private UserDTO creator;
 
@@ -57,14 +54,6 @@ public class ItemDTO {
         this.state = state;
     }
 
-    public List<SupplierDTO> getSuppliers() {
-        return suppliers;
-    }
-
-    public void setSuppliers(List<SupplierDTO> suppliers) {
-        this.suppliers = suppliers;
-    }
-
     public LocalDate getCreationDate() {
         return creationDate;
     }
@@ -79,14 +68,6 @@ public class ItemDTO {
 
     public void setCreator(UserDTO creator) {
         this.creator = creator;
-    }
-
-    public void addSupplier(SupplierDTO supplier) {
-        if(this.suppliers == null) {
-            this.suppliers = new ArrayList<>();
-        }
-
-        this.suppliers.add(supplier);
     }
 
 }

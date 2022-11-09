@@ -1,6 +1,6 @@
 package com.andre.server.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,13 +26,13 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private StateEnum state;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "items")
-    private List<Supplier> suppliers;
-
     @Column(nullable = false)
     private LocalDate creationDate;
 
+    @ManyToMany(mappedBy = "items")
+    private List<Supplier> suppliers;
+
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private User creator;
@@ -77,20 +77,22 @@ public class Item {
         this.state = state;
     }
 
-    public List<Supplier> getSuppliers() {
-        return suppliers;
-    }
-
-    public void setSuppliers(List<Supplier> suppliers) {
-        this.suppliers = suppliers;
-    }
-
     public LocalDate getCreationDate() {
         return creationDate;
     }
 
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+
+    @JsonManagedReference
+    //@JsonBackReference
+    public List<Supplier> getSuppliers() {
+        return suppliers;
+    }
+
+    public void setSuppliers(List<Supplier> suppliers) {
+        this.suppliers = suppliers;
     }
 
     public User getCreator() {

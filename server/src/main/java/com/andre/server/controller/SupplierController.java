@@ -17,15 +17,8 @@ public class SupplierController {
     private SupplierService supplierService;
 
     @GetMapping("supplier")
-    public List<SupplierDTO> getAllSupplier() {
-
-        List<SupplierDTO> supplierDTOList = null;
-        try {
-            supplierDTOList = supplierService.getAllSupplier();
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return supplierDTOList;
+    public List<Supplier/*DTO*/> getAllSupplier() {
+        return supplierService.getAllSupplier();
     }
 
     @GetMapping("supplier/{name}")

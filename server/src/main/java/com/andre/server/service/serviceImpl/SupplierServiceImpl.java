@@ -23,7 +23,7 @@ public class SupplierServiceImpl implements SupplierService {
     private ModelMapper modelMapper;
 
     @Override
-    public List<SupplierDTO> getAllSupplier() {
+    public List<Supplier/*DTO*/> getAllSupplier() {
 
         List<Supplier> supplierList = new ArrayList<>();
         List<SupplierDTO> supplierDTOList = new ArrayList<>();
@@ -34,21 +34,21 @@ public class SupplierServiceImpl implements SupplierService {
             supplierDTOList.add(modelMapper.map(supplier, SupplierDTO.class));
         }
 
-        return supplierDTOList;
+        return supplierList;
 
     }
 
     @Override
     public SupplierDTO getSupplierByName(String name) {
 
-        List<SupplierDTO> supplierDTOList;
-        supplierDTOList = getAllSupplier();
-
-        for(SupplierDTO supplierDTO : supplierDTOList) {
-            if(supplierDTO.getName().equalsIgnoreCase(name)) {
-                return supplierDTO;
-            }
-        }
+//        List<SupplierDTO> supplierDTOList;
+//        supplierDTOList = getAllSupplier();
+//
+//        for(SupplierDTO supplierDTO : supplierDTOList) {
+//            if(supplierDTO.getName().equalsIgnoreCase(name)) {
+//                return supplierDTO;
+//            }
+//        }
 
         return null;
 

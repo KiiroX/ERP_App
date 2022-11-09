@@ -1,6 +1,6 @@
 package com.andre.server.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,9 +18,8 @@ public class Supplier {
     @Column(nullable = false)
     private String country;
 
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "item_supplier", joinColumns = @JoinColumn(name = "supplier_id"), inverseJoinColumns = @JoinColumn(name = "item_id"))
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "item_supplier", joinColumns = @JoinColumn(name = "supplier_id", nullable = false), inverseJoinColumns = @JoinColumn(name = "item_id", nullable = false))
     private List<Item> items;
 
     public long getIdSupplier() {
@@ -47,6 +46,8 @@ public class Supplier {
         this.country = country;
     }
 
+    @JsonBackReference
+    //@JsonManagedReference
     public List<Item> getItems() {
         return items;
     }
