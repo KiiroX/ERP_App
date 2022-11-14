@@ -4,6 +4,7 @@ import com.andre.server.dto.ItemDTO;
 import com.andre.server.model.Item;
 import com.andre.server.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class ItemController {
     @GetMapping("item/{itemCode}")
     public ItemDTO getItemByCode(@PathVariable("itemCode") long itemCode) { return itemService.getItemByCode(itemCode); }
 
-    @PostMapping("addItem")
+    @PostMapping(value = "addItem"/*, consumes = MediaType.APPLICATION_JSON_VALUE*/)
     public ResponseEntity<Item> saveItem(@RequestBody Item item) {
         return itemService.saveItem(item);
     }

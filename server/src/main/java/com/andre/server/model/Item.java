@@ -29,10 +29,11 @@ public class Item {
     @Column(nullable = false)
     private LocalDate creationDate;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "items")
     private List<Supplier> suppliers;
 
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private User creator;
@@ -85,8 +86,6 @@ public class Item {
         this.creationDate = creationDate;
     }
 
-    @JsonManagedReference
-    //@JsonBackReference
     public List<Supplier> getSuppliers() {
         return suppliers;
     }

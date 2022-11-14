@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SupplierService {
 
-    public List<Supplier/*DTO*/> getAllSupplier();
+    public List<SupplierDTO> getAllSupplier();
 
     public SupplierDTO getSupplierByName(String name);
 
