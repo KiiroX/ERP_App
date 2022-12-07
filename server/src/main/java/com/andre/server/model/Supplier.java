@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idSupplier")
 @Entity
 public class Supplier {
 
@@ -18,8 +19,7 @@ public class Supplier {
     @Column(nullable = false)
     private String country;
 
-    @JsonManagedReference
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "item_supplier", joinColumns = @JoinColumn(name = "supplier_id", nullable = false), inverseJoinColumns = @JoinColumn(name = "item_id", nullable = false))
     private List<Item> items;
 

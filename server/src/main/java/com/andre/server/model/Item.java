@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idItem")
 @Entity
 public class Item {
 
@@ -29,7 +30,6 @@ public class Item {
     @Column(nullable = false)
     private LocalDate creationDate;
 
-    @JsonBackReference
     @ManyToMany(mappedBy = "items")
     private List<Supplier> suppliers;
 
