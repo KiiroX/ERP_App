@@ -60,8 +60,16 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public ResponseEntity<Item> saveItem(Item item) {
-        itemRepository.save(item);
+
+        ItemDTO itemDTO = null;
+        itemDTO = getItemByCode(item.getItemCode());
+
+        if(itemDTO == null) {
+            itemRepository.save(item);
+        }
+
         return new ResponseEntity<Item>(item, HttpStatus.CREATED);
+
     }
 
     @Override

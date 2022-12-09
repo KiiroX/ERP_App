@@ -54,7 +54,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"itemCode\": 1217,\r\n    \"description\": \"Item 1216 POSTED\",\r\n    \"price\": 99,\r\n    \"state\": \"ACTIVE\",\r\n    \"creationDate\": \"2022-10-28\",\r\n    \"suppliers\": [\r\n        {\r\n            \"idSupplier\": 2,\r\n            \"name\": \"Antonio\",\r\n            \"country\": \"Venezuela\",\r\n            \"items\": null\r\n        },\r\n        {\r\n            \"idSupplier\": 3,\r\n            \"name\": \"Johana\",\r\n            \"country\": \"Spain\",\r\n            \"items\": null\r\n        }\r\n    ],\r\n    \"creator\": {\r\n        \"idUser\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"itemCode\": 1216,\r\n    \"description\": \"Item 1216 POSTED\",\r\n    \"price\": 99,\r\n    \"state\": \"ACTIVE\",\r\n    \"creationDate\": \"2022-10-28\",\r\n    \"creator\": {\r\n        \"idUser\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -266,7 +266,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Kevin\",\r\n    \"country\": \"Spain\",\r\n    \"items\": [\r\n        {\r\n            \"idItem\": 3,\r\n            \"itemCode\": 1236,\r\n            \"description\": \"Item 1236\",\r\n            \"price\": 5.5,\r\n            \"state\": \"DISCONTINUED\",\r\n            \"creationDate\": \"2022-10-10\",\r\n            \"creator\": {\r\n                \"idUser\": 3,\r\n                \"name\": \"Yosi\",\r\n                \"email\": \"yosi@gmail.com\"\r\n            }\r\n        },\r\n        {\r\n            \"idItem\": 4,\r\n            \"itemCode\": 1237,\r\n            \"description\": \"Item 1237\",\r\n            \"price\": 0.5,\r\n            \"state\": \"DISCONTINUED\",\r\n            \"creationDate\": \"2022-10-28\",\r\n            \"creator\": {\r\n                \"idUser\": 1,\r\n                \"name\": \"Andre\",\r\n                \"email\": \"andre@gmail.com\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"name\": \"Kevin\",\r\n    \"country\": \"Spain\",\r\n    \"items\": [\r\n        {\r\n            \"idItem\": 2\r\n        },\r\n        {\r\n            \"idItem\": 4\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -282,6 +282,34 @@
 							"path": [
 								"supplier",
 								"addSupplier"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSupplier",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSupplier\": 5,\r\n    \"name\": \"Kevin\",\r\n    \"country\": \"Spain\",\r\n    \"items\": [\r\n            {\r\n                \"idItem\": 3,\r\n                \"itemCode\": 1236,\r\n                \"description\": \"Item 1236\",\r\n                \"price\": 5.5,\r\n                \"state\": \"DISCONTINUED\",\r\n                \"creationDate\": \"2022-10-10\",\r\n                \"creator\": {\r\n                    \"idUser\": 3,\r\n                    \"name\": \"Yosi\",\r\n                    \"email\": \"yosi@gmail.com\"\r\n                }\r\n            },\r\n            {\r\n                \"idItem\": 4,\r\n                \"itemCode\": 1237,\r\n                \"description\": \"Item 1237\",\r\n                \"price\": 0.5,\r\n                \"state\": \"DISCONTINUED\",\r\n                \"creationDate\": \"2022-10-28\",\r\n                \"creator\": {\r\n                    \"idUser\": 1,\r\n                    \"name\": \"Andre\",\r\n                    \"email\": \"andre@gmail.com\"\r\n                }\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/supplier/updateSupplier",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"supplier",
+								"updateSupplier"
 							]
 						}
 					},

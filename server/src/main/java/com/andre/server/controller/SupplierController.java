@@ -31,4 +31,9 @@ public class SupplierController {
         return supplierService.saveSupplier(supplier);
     }
 
+    @PutMapping("updateSupplier")
+    public ResponseEntity<Supplier> updateSupplier(@RequestBody Supplier supplier) {
+        return supplierService.updateSupplier(supplier);
+    }
+
 }

@@ -56,8 +56,30 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public ResponseEntity<Supplier> saveSupplier(Supplier supplier) {
-        supplierRepository.save(supplier);
-        return new ResponseEntity<Supplier>(supplier, null, HttpStatus.CREATED);
+
+        SupplierDTO supplierDTO = null;
+        supplierDTO = getSupplierByName(supplier.getName());
+
+        if(supplierDTO == null) {
+            supplierRepository.save(supplier);
+        }
+
+        return new ResponseEntity<Supplier>(supplier, HttpStatus.CREATED);
+
+    }
+
+    @Override
+    public ResponseEntity<Supplier> updateSupplier(Supplier supplier) {
+
+        SupplierDTO supplierDTO = null;
+        supplierDTO = getSupplierByName(supplier.getName());
+
+        if(supplierDTO != null) {
+            supplierRepository.save(supplier);
+        }
+
+        return new ResponseEntity<>(supplier, HttpStatus.CREATED);
+
     }
 
 }

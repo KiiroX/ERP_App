@@ -30,7 +30,7 @@ public class Item {
     @Column(nullable = false)
     private LocalDate creationDate;
 
-    @ManyToMany(mappedBy = "items", cascade = CascadeType.MERGE)
+    @ManyToMany(mappedBy = "items")
     private List<Supplier> suppliers;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

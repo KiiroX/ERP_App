@@ -19,7 +19,7 @@ public class Supplier {
     @Column(nullable = false)
     private String country;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(name = "item_supplier", joinColumns = @JoinColumn(name = "supplier_id", nullable = false), inverseJoinColumns = @JoinColumn(name = "item_id", nullable = false))
     private List<Item> items;
 

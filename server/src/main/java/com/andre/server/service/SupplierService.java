@@ -14,4 +14,6 @@ public interface SupplierService {
 
     public ResponseEntity<Supplier> saveSupplier(Supplier supplier);
 
+    public ResponseEntity<Supplier> updateSupplier(Supplier supplier);
+
 }
